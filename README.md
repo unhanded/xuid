@@ -1,3 +1,3 @@
-# ExUID - Extended Unique Identifier
+# XUID - eXtended Unique IDentifier
 
-Because debugging is hard enough without having to guess which system a UUID came from.
+Because debugging distributed systems is difficult enough without having to guess which system a UUID came from when it all hits the fan.

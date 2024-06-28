@@ -1,5 +1,3 @@
-module github.com/unhanded/exuid
+module github.com/unhanded/xuid
 
 go 1.22.1
-
-require github.com/google/uuid v1.6.0
