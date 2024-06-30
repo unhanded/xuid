@@ -11,6 +11,9 @@ func TestLite(t *testing.T) {
 	if id == nil {
 		t.Fatal("Expected id, got nil")
 	}
+	if len(id.Bytes()) != 8 {
+		t.Fatalf("Expected 8 bytes, got %d", len(id.Bytes()))
+	}
 	t.Logf("%s", id.String())
 	t.Logf("%x", id.Bytes())
 	t.Logf("%d bytes", len(id.Bytes()))
@@ -20,6 +23,9 @@ func TestPrefixed(t *testing.T) {
 	id := xuid.NewPrefixed([]byte{'a', 'b', 'c'})
 	if id == nil {
 		t.Fatal("Expected id, got nil")
+	}
+	if len(id.Bytes()) != 18 {
+		t.Fatalf("Expected 18 bytes, got %d", len(id.Bytes()))
 	}
 	t.Logf("%s", id.String())
 	t.Logf("%x", id.Bytes())
