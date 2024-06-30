@@ -1,3 +1,12 @@
-# XUID - eXtended Unique IDentifier
+# Extended Unique Identifiers
+Because sometimes specific needs require specific solutions.
 
-Because debugging distributed systems is difficult enough without having to guess which system a UUID came from when it all hits the fan.
+## A common interface
+It's **very** simple.
+```String()```
+and
+```Bytes()```
+
+## ID Variations
+- Prefixed
+- Lite

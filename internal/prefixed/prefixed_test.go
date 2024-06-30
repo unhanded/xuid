@@ -1,21 +1,21 @@
-package xuid_test
+package prefixed_test
 
 import (
 	"testing"
 
-	"github.com/unhanded/xuid/internal/xuid"
+	"github.com/unhanded/xuid/internal/prefixed"
 )
 
 func TestGenIdBytes(t *testing.T) {
-	b := xuid.GenIdBytes()
+	b := prefixed.GenIdBytes()
 	if len(b) != 15 {
 		t.Errorf("Expected 15 bytes, got %d\n", len(b))
 	}
 	t.Logf("%x", b)
 }
 
-func TestRandomXUID(t *testing.T) {
-	id, err := xuid.New([]byte{'t', 's', 't'})
+func TestRandomextended(t *testing.T) {
+	id, err := prefixed.New([]byte{'t', 's', 't'})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -25,7 +25,7 @@ func TestRandomXUID(t *testing.T) {
 }
 
 func TestIncorrect(t *testing.T) {
-	_, err := xuid.New([]byte{'f', 'a', 'i', 'l'})
+	_, err := prefixed.New([]byte{'f', 'a', 'i', 'l'})
 	if err == nil {
 		t.Fatal("Expected error, got nil")
 	}

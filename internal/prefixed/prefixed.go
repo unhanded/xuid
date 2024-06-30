@@ -1,4 +1,4 @@
-package xuid
+package prefixed
 
 import (
 	"encoding/binary"
@@ -8,22 +8,26 @@ import (
 	"time"
 )
 
-type XUID [18]byte
+type Extended [18]byte
 
-func (e XUID) String() string {
+func (e Extended) String() string {
 	return string(e[:3]) + "-" + hex.EncodeToString(e[3:9]) + "-" + hex.EncodeToString(e[9:12]) + "-" + hex.EncodeToString(e[12:])
 }
 
-func New(prefix []byte) (XUID, error) {
+func (e Extended) Bytes() []byte {
+	return e[:]
+}
+
+func New(prefix []byte) (Extended, error) {
 	if len(prefix) > 3 {
-		return XUID{}, errors.New("prefix must be 3 ASCII characters or less")
+		return Extended{}, errors.New("prefix must be 3 ASCII characters or less")
 	}
 
 	b := GenIdBytes()
 
 	prefix = padPrefix(prefix)
 	ex := append(prefix, b...)
-	return XUID(ex), nil
+	return Extended(ex), nil
 }
 
 func GenIdBytes() []byte {
